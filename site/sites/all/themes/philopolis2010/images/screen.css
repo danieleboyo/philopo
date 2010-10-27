@@ -1,0 +1,287 @@
+body {
+	font: 12px/15px Helvetica, Arial, sans-serif;
+	color: #596864;
+	background-color: #e4f2f2;
+}
+
+p {
+	margin-bottom: 8px;
+}
+
+a {
+	text-decoration: none;
+	color: #dd2d78;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+h1 {
+	font-size: 28px;
+	line-height: 32px;
+	font-family: Georgia, "Times New Roman", serif;
+	color: white;
+}
+
+.clear {
+	clear: both;
+	height: 0;
+	overflow: hidden;
+}
+
+#logo {
+	display: block;
+	width: 809px;
+	height: 143px;
+	margin-bottom: 13px;
+}
+
+.container {
+	width: 1010px;
+	margin: 0 auto;
+}
+
+.content {
+	width: 821px;
+	background: transparent url("main_bg.png") repeat-y top left;
+}
+
+.language {
+	float: left;
+	width: 81px;
+	margin-bottom: 36px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.language a {
+	float: left;
+	background: transparent url("language_link_bg.png") no-repeat bottom right;
+}
+
+.language a:hover {
+	color: #df6b9e;
+}
+
+.language span {
+	display: block;
+	padding: 4px 11px 18px 0;
+	background: transparent url("language_span_bg.png") no-repeat bottom left;
+}
+
+.event_date, .collaboration {
+	float: left;
+	margin: 0 13px;
+	width: 344px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.event_date {
+	color: #1f1f1f;
+	font-size: 18px;
+}
+
+.collaboration {
+	color: #74c6de;
+	font-size: 10px;
+	line-height: 16px;
+}
+
+.description {
+	float: left;
+	margin: 0 0 28px 81px;
+	padding: 0 13px;
+	width: 516px;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 19px;
+	line-height: 25px;
+	color: #dd2d78;
+}
+
+.links {
+	float: left;
+	padding-top: 4px;
+}
+
+.links li {
+	margin-bottom: 6px;
+}
+
+.links a {
+	font-weight: bold;
+	font-size: 13px;
+	color: #74c6de;
+	border-bottom: 2px solid #bbf0f8;
+}
+
+.links a:hover {
+	color: #a0d8e8;
+	border-bottom-color: #d3edf5;
+}
+
+.schedule {
+	float: right;
+	clear: left;
+	width: 149px;
+	padding: 13px 20px;
+	background: #b4c773 url("schedule_bg.png") no-repeat bottom right;
+}
+
+.schedule h1 {
+	margin-bottom: 12px;
+}
+
+a.day {
+	display: block;
+	float: left;
+	background-color: white;
+	width: 62px;
+	padding: 3px;
+}
+
+a.day:hover {
+	background-color: #ecf1dc;
+}
+
+a.day + a.day {
+	margin: 0 0 13px 13px;
+}
+
+a.day * {
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 11px;
+}
+
+a.day .month {
+	background-color: #dd2d78;
+	color: white;
+	font-weight: bold;
+	line-height: 18px;
+}
+
+a.day:hover .month {
+	color: #ecf1dc;
+}
+
+a.day .date {
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 34px;
+	line-height: 40px;
+}
+
+a.day .place {
+	color: #999999;
+}
+
+.schedule p {
+	font-weight: bold;
+	color: white;
+}
+
+.schedule p a {
+	color: white;
+	border-bottom: 1px solid #dae3b9;
+}
+
+.schedule p a:hover {
+	color: #ecf1dc;
+	border-bottom-color: #c7d596;
+}
+
+.participate, .news {
+	width: 344px;
+	padding: 0 13px 20px;
+}
+
+.participate {
+	clear: left;
+	float: left;
+	margin-left: 81px;
+}
+
+.news {
+	float: left;
+}
+
+.participate h1, .news h1 {
+	line-height: 50px;
+	background: transparent url("participate_bg.png") no-repeat top left;
+	padding-left: 62px;
+	margin: 0 0 13px -62px;
+}
+
+.news h1 {
+	background-image: url("news_bg.png");
+}
+
+.participate ul {
+	color: #a5b5b4;
+	font-size: 15px;
+	line-height: 21px;
+}
+
+.participate li {
+	margin-bottom: 13px;
+}
+
+.participate ul a {
+	font-weight: bold;
+	border-bottom: 2px solid #f4bdd5;
+	padding: 1px 0;
+}
+
+.participate ul a:hover {
+	color: #df6b9e;
+	border-bottom-color: #f4bdd5;
+}
+
+.news dt {
+	margin-bottom: 6px;
+}
+
+.news a {
+	font-weight: bold;
+	color: #b4c773;
+	border-bottom: 2px solid #e3eaca;
+}
+
+.news a:hover {
+	color: #c7d596;
+	border-bottom-color: #ecf1dc;
+}
+
+.news dt a {
+	font-size: 13px;
+}
+
+.news dt .date {
+	margin-top: 4px;
+	font-size: 11px;
+	color: #9ba4a2;
+}
+
+.news dd {
+	margin-bottom: 20px;
+}
+
+.footer {
+	margin: 6px 0 0 81px;
+	padding: 13px;
+}
+
+.footer p {
+	font-weight: bold;
+}
+
+.news a.all {
+	font-size: 11px;
+	border-bottom-width: 1px;
+}

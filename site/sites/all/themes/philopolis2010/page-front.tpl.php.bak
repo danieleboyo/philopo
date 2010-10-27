@@ -1,0 +1,22 @@
+<?php
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language ?>" >
+  <head>
+    <title><?php print $head_title ?></title>
+    <?php print $head ?>
+    <?php print $styles ?>
+    <?php print $scripts ?>
+    <!--[if lte IE 7]><?php print philopolis2010_get_ie_styles(); ?><![endif]--> <!--If Less Than or Equal (lte) to IE 7-->
+  </head>
+  <body style="background-color:white;">
+    <div style="text-align:center; padding-top:60px; margin-right:auto; margin-left:auto;">
+      <img src="/sites/all/themes/philopolis2010/images/logo2011.png" />
+      <h2>Mars / March 2011</h2>
+      <h3>Montr&eacute;al + Toronto</h3>
+      <p style="margin-top:20px;"><a style="color:#666;" href="/frontpage">Voir l'&eacute;dition 2010 / See the 2010 edition</a></p>
+    </div>
+  <?php print $closure ?>
+
+  </body>
+</html>
