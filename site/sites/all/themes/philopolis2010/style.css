@@ -173,16 +173,16 @@ em {
 
 #main #block-block-3 h3, #main #block-block-1 h3, #main .view-frontpage h2 {
 	line-height: 50px;
-	background: transparent url("images/participate_bg.png") no-repeat top left;
+/*	background: transparent url("images/participate_bg.png") no-repeat top left; */
 	padding-left: 62px;
 	margin: 0 0 13px -62px;
 	font-size: 28px;
 	font-family: Georgia, "Times New Roman", serif;
-	color: white;
+	color: black;
 }
 
 #main .view-frontpage h2 {
-	background-image: url("images/news_bg.png");
+	/*background-image: url("images/news_bg.png");*/
 }
 
 #main #block-block-3 ul, #main #block-block-1 ul {
@@ -335,9 +335,10 @@ a.day .place {
 
 #header #logo {
 	display: block;
-	width: 809px;
-	height: 143px;
+	width: 700px;
+	height: 230px;
 	margin-bottom: 13px;
+	margin-left: 81px;
 }
 
 #header #sitename {
