@@ -1,2 +1,3 @@
 db/
 tmp/
+site/sites/default/settings-priv.php
