@@ -43,8 +43,8 @@ Equasion for font sizing:
  */
 body {
 	font: 12px/15px Helvetica, Arial, sans-serif;
-	color: #596864;
-	background-color: #e4f2f2;
+	/*color: #596864;
+	background-color: #e4f2f2;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -335,10 +335,10 @@ a.day .place {
 
 #header #logo {
 	display: block;
-	width: 700px;
-	height: 230px;
+	width: 800px;
+	height: 250px;
 	margin-bottom: 13px;
-	margin-left: 81px;
+	/* margin-left: 81px;*/
 }
 
 #header #sitename {
