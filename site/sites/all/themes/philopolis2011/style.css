@@ -163,7 +163,7 @@ em {
 #main #block-block-3, #main #block-block-1, #main .view-frontpage {
 	width: 344px;
 	padding: 0 13px 20px;
-	float: left;
+	float: right;
 }
 
 #main #block-block-3, #main #block-block-1 {
@@ -338,7 +338,7 @@ a.day .place {
 #header #logo {
 	display: block;
 	width: 800px;
-	height: 250px;
+	height: 230px;
 	margin-bottom: 13px;
 	/* margin-left: 81px;*/
 }
