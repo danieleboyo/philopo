@@ -1,154 +1,154 @@
 <?php
+// $Id: template.php,v 1.21 2009/08/12 04:25:15 johnalbin Exp $
 
 /**
- * Sets the body-tag class attribute.
+ * @file
+ * Contains theme override functions and preprocess functions for the theme.
  *
- * Adds 'sidebar-left', 'sidebar-right' or 'sidebars' classes as needed.
- */
-function philopolis2011_body_class($left, $right) {
-  $class = array();
-
-  if ($left != '' && $right != '') {
-    $class[] = 'sidebars';
-  }
-  elseif ($left != '') {
-    $class[] = 'sidebar-left';
-  }
-  elseif ($right != '') {
-    $class[] = 'sidebar-right';
-  }
-
-  if (arg(0) == 'admin') {
-    $class[] = 'admin';
-  }
-
-  if ($class) {
-    print ' class="' . implode(' ', $class) . '"';
-  }
-}
-
-/**
- * Return a themed breadcrumb trail.
+ * ABOUT THE TEMPLATE.PHP FILE
  *
- * @param $breadcrumb
- *   An array containing the breadcrumb links.
- * @return a string containing the breadcrumb output.
- */
-function phptemplate_breadcrumb($breadcrumb) {
-  if (!empty($breadcrumb)) {
-// uncomment the next line to enable current page in the breadcrumb trail
-//    $breadcrumb[] = drupal_get_title();
-    return '<div class="breadcrumb">'. implode(' » ', $breadcrumb) .'</div>';
-  }
-}
-
-/**
- * Allow themable wrapping of all comments.
- */
-function philopolis2011_comment_wrapper($content, $node) {
-  if (!$content || $node->type == 'forum') {
-    return '<div id="comments">'. $content .'</div>';
-  }
-  else {
-    return '<div id="comments"><h2 class="comments">'. t('Comments') .'</h2>'. $content .'</div>';
-  }
-}
-
-/**
- * Override or insert PHPTemplate variables into the templates.
- */
-function philopolis2011_preprocess_page(&$vars) {
-  $vars['tabs2'] = menu_secondary_local_tasks();
-}
-
-/**
- * Returns the rendered local tasks. The default implementation renders
- * them as tabs. Overridden to split the secondary tasks.
+ *   The template.php file is one of the most useful files when creating or
+ *   modifying Drupal themes. You can add new regions for block content, modify
+ *   or override Drupal's theme functions, intercept or make additional
+ *   variables available to your theme, and create custom PHP logic. For more
+ *   information, please visit the Theme Developer's Guide on Drupal.org:
+ *   http://drupal.org/theme-guide
  *
- * @ingroup themeable
+ * OVERRIDING THEME FUNCTIONS
+ *
+ *   The Drupal theme system uses special theme functions to generate HTML
+ *   output automatically. Often we wish to customize this HTML output. To do
+ *   this, we have to override the theme function. You have to first find the
+ *   theme function that generates the output, and then "catch" it and modify it
+ *   here. The easiest way to do it is to copy the original function in its
+ *   entirety and paste it here, changing the prefix from theme_ to philopolis2011_.
+ *   For example:
+ *
+ *     original: theme_breadcrumb()
+ *     theme override: philopolis2011_breadcrumb()
+ *
+ *   where philopolis2011 is the name of your sub-theme. For example, the
+ *   zen_classic theme would define a zen_classic_breadcrumb() function.
+ *
+ *   If you would like to override any of the theme functions used in Zen core,
+ *   you should first look at how Zen core implements those functions:
+ *     theme_breadcrumbs()      in zen/template.php
+ *     theme_menu_item_link()   in zen/template.php
+ *     theme_menu_local_tasks() in zen/template.php
+ *
+ *   For more information, please visit the Theme Developer's Guide on
+ *   Drupal.org: http://drupal.org/node/173880
+ *
+ * CREATE OR MODIFY VARIABLES FOR YOUR THEME
+ *
+ *   Each tpl.php template file has several variables which hold various pieces
+ *   of content. You can modify those variables (or add new ones) before they
+ *   are used in the template files by using preprocess functions.
+ *
+ *   This makes THEME_preprocess_HOOK() functions the most powerful functions
+ *   available to themers.
+ *
+ *   It works by having one preprocess function for each template file or its
+ *   derivatives (called template suggestions). For example:
+ *     THEME_preprocess_page    alters the variables for page.tpl.php
+ *     THEME_preprocess_node    alters the variables for node.tpl.php or
+ *                              for node-forum.tpl.php
+ *     THEME_preprocess_comment alters the variables for comment.tpl.php
+ *     THEME_preprocess_block   alters the variables for block.tpl.php
+ *
+ *   For more information on preprocess functions and template suggestions,
+ *   please visit the Theme Developer's Guide on Drupal.org:
+ *   http://drupal.org/node/223440
+ *   and http://drupal.org/node/190815#template-suggestions
  */
-function phptemplate_menu_local_tasks() {
-  return menu_primary_local_tasks();
+
+
+/**
+ * Implementation of HOOK_theme().
+ */
+function philopolis2011_theme(&$existing, $type, $theme, $path) {
+  $hooks = zen_theme($existing, $type, $theme, $path);
+  // Add your theme hooks like this:
+  /*
+  $hooks['hook_name_here'] = array( // Details go here );
+  */
+  // @TODO: Needs detailed comments. Patches welcome!
+  return $hooks;
 }
 
-function philopolis2011_comment_submitted($comment) {
-  return t('by <strong>!username</strong> | !datetime',
-    array(
-      '!username' => theme('username', $comment),
-      '!datetime' => format_date($comment->timestamp)
-    ));
+/**
+ * Override or insert variables into all templates.
+ *
+ * @param $vars
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered (name of the .tpl.php file.)
+ */
+/* -- Delete this line if you want to use this function
+function philopolis2011_preprocess(&$vars, $hook) {
+  $vars['sample_variable'] = t('Lorem ipsum.');
 }
+// */
 
-function phptemplate_node_submitted($node) {
-  return t('!datetime | by <strong>!username</strong>',
-    array(
-      '!username' => theme('username', $node),
-      '!datetime' => format_date($node->created),
-    ));
+/**
+ * Override or insert variables into the page templates.
+ *
+ * @param $vars
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("page" in this case.)
+ */
+/* -- Delete this line if you want to use this function
+function philopolis2011_preprocess_page(&$vars, $hook) {
+  $vars['sample_variable'] = t('Lorem ipsum.');
 }
+// */
+
+/**
+ * Override or insert variables into the node templates.
+ *
+ * @param $vars
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("node" in this case.)
+ */
+/* -- Delete this line if you want to use this function
+function philopolis2011_preprocess_node(&$vars, $hook) {
+  $vars['sample_variable'] = t('Lorem ipsum.');
+
+  // Optionally, run node-type-specific preprocess functions, like
+  // philopolis2011_preprocess_node_page() or STARTERKIT_preprocess_node_story().
+  $function = __FUNCTION__ . '_' . $vars['node']->type;
+  if (function_exists($function)) {
+    $function($vars, $hook);
+  }
+}
+// */
+
+/**
+ * Override or insert variables into the comment templates.
+ *
+ * @param $vars
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("comment" in this case.)
+ */
+/* -- Delete this line if you want to use this function
+function philopolis2011_preprocess_comment(&$vars, $hook) {
+  $vars['sample_variable'] = t('Lorem ipsum.');
+}
+// */
 
 /**
  * Override or insert variables into the block templates.
-	*
+ *
  * @param $vars
  *   An array of variables to pass to the theme template.
  * @param $hook
  *   The name of the template being rendered ("block" in this case.)
  */
+/* -- Delete this line if you want to use this function
 function philopolis2011_preprocess_block(&$vars, $hook) {
-  $block = $vars['block'];
-
-  // Special classes for blocks.
-  $classes = array('block');
-  $classes[] = 'block-' . $block->module;
-  $classes[] = 'region-' . $vars['block_zebra'];
-  $classes[] = $vars['zebra'];
-  $classes[] = 'region-count-' . $vars['block_id'];
-  $classes[] = 'count-' . $vars['id'];
-
-  $vars['edit_links_array'] = array();
-  $vars['edit_links'] = '';
-  if (user_access('administer blocks')) {
-    include_once './' . drupal_get_path('theme', 'philopolis2011') . '/template.block-editing.inc';
-    philopolis2011_preprocess_block_editing($vars, $hook);
-    $classes[] = 'with-block-editing';
-  }
-
-  // Render block classes.
-  $vars['classes'] = implode(' ', $classes);
+  $vars['sample_variable'] = t('Lorem ipsum.');
 }
-
-/**
- * Generates IE CSS links.
- */
-function philopolis2011_get_ie_styles() {
-  $iecss = '<link type="text/css" rel="stylesheet" media="all" href="'. base_path() . path_to_theme() .'/ie.css" />';
-  return $iecss;
-}
-
-function philopolis2011_get_ie6_styles() {
-  $iecss = '<link type="text/css" rel="stylesheet" media="all" href="'. base_path() . path_to_theme() .'/ie6.css" />';
-  return $iecss;
-}
-
-/**
- * Adds even and odd classes to <li> tags in ul.menu lists
- */ 
-function phptemplate_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
-  static $zebra = FALSE;
-  $zebra = !$zebra;
-  $class = ($menu ? 'expanded' : ($has_children ? 'collapsed' : 'leaf'));
-  if (!empty($extra_class)) {
-    $class .= ' '. $extra_class;
-  }
-  if ($in_active_trail) {
-    $class .= ' active-trail';
-  }
-  if ($zebra) {
-    $class .= ' even';
-  }
-  else {
-    $class .= ' odd';
-  }
-  return '<li class="'. $class .'">'. $link . $menu ."</li>\n";
-}
+// */
