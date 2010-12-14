@@ -59,6 +59,7 @@
 }
 
 #block-menu-primary-links /* "Primary links" block */ {
+float: right;
 }
 
 #block-menu-secondary-links /* "Secondary links" block */ {
@@ -89,4 +90,18 @@
 }
 
 #block-user-3 /* "Who's online" block for a list of the online users */ {
+}
+
+#block-locale-0 {
+float: left;
+}
+
+#block-block-11 {
+font-family: Arial, Helvetica, sans-serif;
+color: black;
+font-size: 2em;
+font-weight: inherit;
+width: 400px;
+margin-right: auto;
+margin-left: auto;
 }
