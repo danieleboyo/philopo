@@ -71,28 +71,28 @@ body {
 #content,
 .no-sidebars #content {
   float: left; /* LTR */
-  width: 960px;
+  width: 800px;
   margin-left: 0; /* LTR */
-  margin-right: -960px; /* LTR */ /* Negative value of #content's width + left margin. */
+  margin-right: -800px; /* LTR */ /* Negative value of #content's width + left margin. */
   padding: 0; /* DO NOT CHANGE. Add padding or margin to #content .section. */
 }
 
 .sidebar-first #content {
-  width: 760px;
+  width: 600px;
   margin-left: 200px; /* LTR */ /* The width of .region-sidebar-first. */
-  margin-right: -960px; /* LTR */ /* Negative value of #content's width + left margin. */
+  margin-right: -800px; /* LTR */ /* Negative value of #content's width + left margin. */
 }
 
 .sidebar-second #content {
-  width: 760px;
+  width: 600px;
   margin-left: 0; /* LTR */
-  margin-right: -760px; /* LTR */ /* Negative value of #content's width + left margin. */
+  margin-right: -600px; /* LTR */ /* Negative value of #content's width + left margin. */
 }
 
 .two-sidebars #content {
-  width: 560px;
+  width: 400px;
   margin-left: 200px; /* LTR */ /* The width of .region-sidebar-first */
-  margin-right: -760px; /* LTR */ /* Negative value of #content's width + left margin. */
+  margin-right: -400px; /* LTR */ /* Negative value of #content's width + left margin. */
 }
 
 #content .section {

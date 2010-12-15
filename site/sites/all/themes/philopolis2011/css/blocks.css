@@ -105,3 +105,9 @@ width: 400px;
 margin-right: auto;
 margin-left: auto;
 }
+
+#block-block-3 ul, #block-block-1 ul {
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 0px
+}
