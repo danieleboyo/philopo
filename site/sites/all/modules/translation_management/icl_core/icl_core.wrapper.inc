@@ -1,6 +1,6 @@
 <?php
 /*
- * $Id: icl_core.wrapper.inc,v 1.27.2.4 2010/10/05 15:17:38 jozik Exp $
+ * $Id: icl_core.wrapper.inc,v 1.27.2.5 2010/11/30 08:23:56 brucepearson Exp $
  * 
  * @file D6 to D7 migration wrapper.
  */
@@ -724,4 +724,8 @@ function _icl_wrapper_check_node_body(&$node) {
 
 function _icl_wrapper_is_line_break_filter($filter) {
   return $filter->delta == 1;
+}
+
+function icl_wrapper_node_teaser($text) {
+  return node_teaser($text);
 }

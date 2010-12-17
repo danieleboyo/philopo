@@ -83,6 +83,9 @@ function icl_translate_schema() {
      ),
   ),
   'primary key' => array('tid'),
+  'indexes' => array(
+    'rid' => array('rid'),
+  ),
   );
   
   $schema['icl_translate_job'] = array (
@@ -130,6 +133,11 @@ function icl_translate_schema() {
       ), 
   ),
   'primary key' => array('tjid'),
+  'indexes' => array(
+    'rid' => array('rid'),
+    'uid' => array('uid'),
+    'translated' => array('translated'),
+  ),
   );
   
   $schema['icl_translate_job_pairs'] = array (
@@ -163,6 +171,11 @@ function icl_translate_schema() {
       ),
   ),
   'primary key' => array('tjpid'),
+  'indexes' => array(
+    'uid' => array('uid'),
+    'source' => array('source'),
+    'target' => array('target'),
+  ),
   );
   
   $schema['icl_notifications'] = array (
@@ -301,5 +314,19 @@ function icl_translate_update_6005() {
               'unsigned' => TRUE, 
               'not null' => FALSE ) );
 
+  return $ret;
+}
+
+function icl_translate_update_6006() {
+  $ret = array();
+  db_add_index($ret, 'icl_translate', 'rid', array('rid'));
+  
+  db_add_index($ret, 'icl_translate_job', 'rid', array('rid'));
+  db_add_index($ret, 'icl_translate_job', 'uid', array('uid'));
+  db_add_index($ret, 'icl_translate_job', 'translated', array('translated'));
+  
+  db_add_index($ret, 'icl_translate_job_pairs', 'uid', array('uid'));
+  db_add_index($ret, 'icl_translate_job_pairs', 'source', array('source'));
+  db_add_index($ret, 'icl_translate_job_pairs', 'target', array('target'));
   return $ret;
 }

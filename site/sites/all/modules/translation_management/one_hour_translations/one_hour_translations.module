@@ -1,7 +1,7 @@
 <?php
-// $Id: one_hour_translations.module,v 1.1.2.13 2010/11/09 08:13:30 brucepearson Exp $
+// $Id: one_hour_translations.module,v 1.1.2.15 2010/12/17 03:39:30 brucepearson Exp $
 
-require_once 'lib/OHTAPI.wrapper.php';
+include_once dirname(__FILE__) . '/lib/OHTAPI.wrapper.php';
 
 define('OHT_CALLBACK_PATH', 'admin/content/translation-management/one_hour_tranlation_callback');
 
@@ -74,7 +74,7 @@ function one_hour_translations_form_icl_translate_admin_settings_alter(&$form, $
     '#description' => t(
       "Enter your account ID and secret key from OneHourTranslation here. If you don't have an account visit the !registration page to create one. Once you have an account generate or get an API key in the !apikeys page.",
       array(
-        '!registration' => l(t('OneHourTranslation registration'), 'http://www.onehourtranslation.com/affiliate/amirhelzer'),
+        '!registration' => l(t('OneHourTranslation registration'), 'http://www.onehourtranslation.com/drupal'),
         '!apikeys' => l(t('API keys'), 'https://www.onehourtranslation.com/profile/apiKeys/'),
       )),
     '#default_value' => _one_hour_translations_get_secret_key(),
@@ -137,7 +137,7 @@ function one_hour_translations_translation_service() {
       'name' => 'OneHourTranslation',
       'logo' => $base_url . '/' . drupal_get_path('module', 'one_hour_translations') . '/images/logo.png',
       'logo_small' => $base_url . '/' . drupal_get_path('module', 'one_hour_translations') . '/images/logo.png',
-      'more_info_url' => array('http://www.onehourtranslation.com/affiliate/amirhelzer "target="_blank', t('Learn more'))
+      'more_info_url' => array('http://www.onehourtranslation.com/drupal "target="_blank', t('Learn more'))
     ),
   );
 }
@@ -174,7 +174,7 @@ function one_hour_translations_get_translation_service_info() {
   $credit = _one_hour_translations_get_credit_balance();
   $message = l(
     theme('image', drupal_get_path('module', 'one_hour_translations') . '/images/logo.png', t('OneHourTranslation logo')),
-    'http://www.onehourtranslation.com/affiliate/amirhelzer',
+    'http://www.onehourtranslation.com/drupal',
     array('html' => TRUE)) . '<br />';
   
     
@@ -458,7 +458,7 @@ function one_hour_translations_translation_dashboard_help_form() {
     $message .= t('<li>!registration</li><li>!apikeys</li><li>Enter your API keys in the !settings page',
                   
       array('!settings' => l(t('Translation Settings'), 'admin/content/translation-management/settings', array('fragment' => 'edit-oht-api-account-id-wrapper')),
-        '!registration' => l(t('Sign up for an account'), 'http://www.onehourtranslation.com/affiliate/amirhelzer'),
+        '!registration' => l(t('Sign up for an account'), 'http://www.onehourtranslation.com/drupal'),
         '!apikeys' => l(t('Get your API keys'), 'https://www.onehourtranslation.com/profile/apiKeys/'),
       ));
     return $message;

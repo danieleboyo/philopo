@@ -84,12 +84,18 @@ function icanlocalize_translations_get_translation_service_info() {
 }
 
 function icanlocalize_translations_menu() {
-  $items ['icl-translations/manage-translators'] = array (
+  $items['icl-translations/manage-translators'] = array (
       'page callback' => 'icanlocalize_translations_manage_translators', 
       'page arguments' => array (),
       'access arguments' => array(ICL_TRANSLATE_MANAGE_JOBS),
       'type' => MENU_CALLBACK, 
       'file' => 'icanlocalize_translations.module' );
+  $items['icl-translations/quote-get'] = array (
+      'page callback' => 'icanlocalize_translations_quote_get',
+      'page arguments' => array (),
+      'access arguments' => array(ICL_TRANSLATE_MANAGE_JOBS),
+      'type' => MENU_CALLBACK,
+      'file' => 'icanlocalize_translations.quote_get.inc' );
   
   return $items;
 }
@@ -847,17 +853,20 @@ function icanlocalize_translations_manage_translators_messages($no_heading = FAL
 }
 
 function icanlocalize_translations_translation_dashboard_help_form() {
+  drupal_add_js('misc/jquery.form.js', 'core'); //$form['xcvxcv'] = array('#type' => 'markup', '#value' => '<a href="' . url('icl-translations/quote-get') . '" class="thickbox">GET QUOTE</a>');
   $translator_message = icanlocalize_translations_manage_translators_messages(TRUE);
+  
+  $link_get_quote = '<a href="' . url('icl-translations/quote-get') . '" class="thickbox">' . t('Get quote') . ' &raquo;</a>';
   
   if (isset($translator_message)) {
     $link = l(t('Add more translators from ICanLocalize &raquo;'), _icl_wrapper_get_root_menu('translation-management/manage-translator'), array('query' => array('translation_service' => 'icanlocalize_translations')));
     $link = str_replace('&amp;', '&', $link);
-    $message = '<p><strong>' . t('Connects you with freelance professional translators where you can interview and choose the best ones for your project.') . '</strong></p><p>'.  $link . '</p>';
+    $message = '<p><strong>' . t('Connects you with freelance professional translators where you can interview and choose the best ones for your project.') . '</strong></p><p>'. $link_get_quote . '<br />' . $link . '</p>';
     $message .= $translator_message;
     return $message;
   } else {
     $link = l(t('Add translators from ICanLocalize &raquo;'), _icl_wrapper_get_root_menu('translation-management/manage-translator'), array('query' => array('translation_service' => 'icanlocalize_translations')));
     $link = str_replace('&amp;', '&', $link);
-    return '<strong>' . t('Connects you with freelance professional translators where you can interview and choose the best ones for your project.</strong><br />!link', array('!link' => $link));
+    return '<strong>' . t('Connects you with freelance professional translators where you can interview and choose the best ones for your project.</strong><br />!link<br />!linkquote', array('!link' => $link, '!linkquote' => $link_get_quote));
   }
 }

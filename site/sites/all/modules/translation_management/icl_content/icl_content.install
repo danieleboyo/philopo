@@ -31,7 +31,13 @@ function icl_content_schema() {
               'description' => t ( 'md5 when last sent for translation' ), 
               'type' => 'varchar', 
               'length' => 32, 
-              'not null' => TRUE ) ) );
+              'not null' => TRUE ) ),
+      
+        'indexes' => array(
+          'nid' => array('nid'),
+          'rid' => array('rid'),
+        ),
+      );
 
   $schema ['icl_node'] = array (
       'description' => 'Stores the md5 values of saved nodes', 
@@ -56,7 +62,12 @@ function icl_content_schema() {
               'description' => 'The estimate of the number of words in the node', 
               'type' => 'int', 
               'unsigned' => TRUE, 
-              'not null' => FALSE ) ) );
+              'not null' => FALSE ) ),
+      
+        'indexes' => array(
+          'nid' => array('nid'),
+        ),
+      );
 
   $schema ['icl_block_status'] = array (
       'description' => 'The ICanLocalize block content translation statuses', 
@@ -629,3 +640,12 @@ function icl_content_update_6030() {
 
   return $ret;
 }
+
+function icl_content_update_6031() {
+  $ret = array();
+  db_add_index($ret, 'icl_content_status', 'nid', array('nid'));
+  db_add_index($ret, 'icl_content_status', 'rid', array('rid'));
+  db_add_index($ret, 'icl_node', 'nid', array('nid'));
+  return $ret;
+}
+

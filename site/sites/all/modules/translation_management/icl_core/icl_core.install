@@ -55,7 +55,13 @@ function icl_core_schema() {
               'length' => 32, 
               'default' => 'ICL',   
               'not null' => TRUE ), 
-          ) );
+          ),
+        'indexes' => array(
+          'rid' => array('rid'),
+        ),
+      
+      
+      );
   
 
   $schema ['icl_languages'] = array (
@@ -243,5 +249,11 @@ function icl_core_update_6101() {
     }
     
   }
+  return $ret;
+}
+
+function icl_core_update_6102() {
+  $ret = array();
+  db_add_index($ret, 'icl_core_status', 'rid', array('rid'));
   return $ret;
 }

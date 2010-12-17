@@ -396,6 +396,30 @@ function _icl_content_extract_node($node_in, $targets = NULL) {
     
   }
 
+  if (module_exists('nodecomment')) {
+    if (isset($node->comment_target_nid) && !empty($node->comment_target_nid)) {
+      // This is a node comment.
+      // Make sure that the created translation points to the translated parent
+      // and not the original language parent.
+      $nid = $node->comment_target_nid;
+      $translated_nid = translation_node_get_translations($node->comment_target_nid);
+
+      foreach ($translated_nid as $tnid) {
+	$target = $targets[0];
+	if (isset($target) && ($target->language == $tnid->language)) {
+	  $nid = $tnid->nid;
+	}
+      }
+
+      $item = array(
+        'type' => 'comment_target_nid',
+        'translate' => 0,
+        'text' => $nid,
+        );
+      $data[] = $item;
+    }
+  }
+
   return $data;
 }
 

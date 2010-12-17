@@ -375,12 +375,12 @@ function icl_core_send_content_for_translation($module, $data, $origin, $targets
         foreach ($duplicate_langs as $dup_lang) {
           // we have sent to this ICanLocalize language already.
           // record it in the database for this new language code.
-          $sql = "INSERT INTO {icl_core_status} (rid, module, origin, target, status) VALUES (%d, '%s', '%s', '%s', %d)";
+          $sql = "INSERT INTO {icl_core_status} (rid, module, origin, target, status, translation_service) VALUES (%d, '%s', '%s', '%s', %d, %s)";
           if ($translators[$drupal_lang->language]['translation_service'] == 'local') {
-            _icl_wrapper_db_query ( $sql, $rid, $module, $origin->code, $dup_lang->code, ICL_STATUS_INQUEUE );
+            _icl_wrapper_db_query ( $sql, $rid, $module, $origin->code, $dup_lang->code, ICL_STATUS_INQUEUE, $translators[$drupal_lang->language]['translation_service']);
             icl_core_notify_translation_status($rid, $dup_lang->code, ICL_STATUS_INQUEUE);
           } else {
-            _icl_wrapper_db_query ( $sql, $rid, $module, $origin->code, $dup_lang->code, ICL_STATUS_REQUESTED );
+            _icl_wrapper_db_query ( $sql, $rid, $module, $origin->code, $dup_lang->code, ICL_STATUS_REQUESTED, $translators[$drupal_lang->language]['translation_service']);
             icl_core_notify_translation_status($rid, $dup_lang->code, ICL_STATUS_REQUESTED);
           }
         }
@@ -392,12 +392,12 @@ function icl_core_send_content_for_translation($module, $data, $origin, $targets
     } else {
       // we have sent to this ICanLocalize language already.
       // record it in the database for this new language code.
-      $sql = "INSERT INTO {icl_core_status} (rid, module, origin, target, status) VALUES (%d, '%s', '%s', '%s', %d)";
+      $sql = "INSERT INTO {icl_core_status} (rid, module, origin, target, status, translation_service) VALUES (%d, '%s', '%s', '%s', %d, %s)";
       if ($translators[$drupal_lang->language]['translation_service'] == 'local') {
-        _icl_wrapper_db_query ( $sql, $targets_sent[$target_name], $module, $origin->code, $lang_target[0]->code, ICL_STATUS_INQUEUE );
+        _icl_wrapper_db_query ( $sql, $targets_sent[$target_name], $module, $origin->code, $lang_target[0]->code, ICL_STATUS_INQUEUE, $translators[$drupal_lang->language]['translation_service']);
         icl_core_notify_translation_status($targets_sent[$target_name], $lang_target[0]->code, ICL_STATUS_INQUEUE);
       } else {
-        _icl_wrapper_db_query ( $sql, $targets_sent[$target_name], $module, $origin->code, $lang_target[0]->code, ICL_STATUS_REQUESTED );
+        _icl_wrapper_db_query ( $sql, $targets_sent[$target_name], $module, $origin->code, $lang_target[0]->code, ICL_STATUS_REQUESTED, $translators[$drupal_lang->language]['translation_service']);
         icl_core_notify_translation_status($targets_sent[$target_name], $lang_target[0]->code, ICL_STATUS_REQUESTED);
       }
     

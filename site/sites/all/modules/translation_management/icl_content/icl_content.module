@@ -1025,6 +1025,19 @@ function icl_content_nodeapi(&$node, $op) {
    }
   }
 
+  // Remove node actions
+    if ($op == 'delete') {
+      $q = _icl_wrapper_db_query("SELECT rid FROM {icl_content_status} WHERE nid=%d", $node->nid);
+      while ($r = db_fetch_array($q)) {
+        _icl_wrapper_db_query("DELETE FROM {icl_content_status} WHERE rid=%d", $r['rid']);
+        _icl_wrapper_db_query("DELETE FROM {icl_core_status} WHERE rid=%d", $r['rid']);
+        _icl_wrapper_db_query("DELETE FROM {icl_content_status} WHERE rid=%d", $r['rid']);
+        _icl_wrapper_db_query("DELETE FROM {icl_translate} WHERE rid=%d", $r['rid']);
+        _icl_wrapper_db_query("DELETE FROM {icl_translate_job} WHERE rid=%d", $r['rid']);
+      }
+      _icl_wrapper_db_query("DELETE FROM {icl_node} WHERE nid=%d", $node->nid);
+    }
+
   
 }
 
@@ -1820,11 +1833,14 @@ function icl_content_sync_blocks() {
         
         $translations = icl_content_translation_node_get_translations($nid);
         
-        foreach($translations as $translation) {
-          $translation = "node/" . $translation->nid;
-          
-          if (!in_array($translation, $pages)) {
-            $translated_pages[] = $translation;
+        if (is_array($translation)) {
+        
+          foreach($translations as $translation) {
+            $translation = "node/" . $translation->nid;
+            
+            if (!in_array($translation, $pages)) {
+              $translated_pages[] = $translation;
+            }
           }
         }
         

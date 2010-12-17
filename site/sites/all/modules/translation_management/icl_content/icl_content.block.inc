@@ -181,7 +181,7 @@ function icl_content_translate_blocks($blocks, $source_lang, $dest_langs, $trans
       foreach ($rids_sent as $rid) {
         if ($rid != 0) {
           _icl_wrapper_db_query( "INSERT INTO {icl_block_status} VALUES(%d, %d, %d, '%s')", $rid, $block['bid'], time (), $block_md5 );
-          _icl_wrapper_db_query( "INSERT INTO {icl_block} VALUES(%d, '%s', '%d')", $block['bid'], $block_md5, FALSE );
+          _icl_wrapper_db_query( "INSERT INTO {icl_block} VALUES(%d, '%s', '%d')", $block['bid'], $block_md5, FALSE, $block_data['words'] );
         }
       }      
     }

@@ -502,12 +502,12 @@ function _icl_translate_editor_get_title($type, $id) {
   switch ($type) {
     
     case 'node':
-      return '<a href="' . url('node/' . $id) . '">' . _icl_wrapper_db_result(_icl_wrapper_db_query("SELECT title FROM {" . $table_name . "} WHERE nid=%d", $id)) . '</a>';
+      return '<a href="' . url('node/' . $id) . '">' . check_plain(_icl_wrapper_db_result(_icl_wrapper_db_query("SELECT title FROM {" . $table_name . "} WHERE nid=%d", $id))) . '</a>';
       break;
     
     case 'block':
       $table_name = _icl_wrapper_table_name('blocks');
-      return '<strong>' . _icl_wrapper_db_result(_icl_wrapper_db_query("SELECT title FROM {" . $table_name . "} WHERE bid=%d", $id)) . '</strong> block';
+      return '<strong>' . check_plain(_icl_wrapper_db_result(_icl_wrapper_db_query("SELECT title FROM {" . $table_name . "} WHERE bid=%d", $id))) . '</strong> block';
       break;
     
     case 'contact_form':

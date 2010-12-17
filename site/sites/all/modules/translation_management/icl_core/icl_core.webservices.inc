@@ -769,7 +769,7 @@ function icl_core_fetch_translators_and_word_count($rid) {
   return $translators;
 }
 
-function icl_core_create_anon_account() {
+function icl_core_create_anon_account($data = array()) {
   global $base_url;
 
   $post = array('anon' => '1',
@@ -779,6 +779,9 @@ function icl_core_create_anon_account() {
                 'pickup_type' => '0',
                 'url' => $base_url,
                );
+  if (is_array($data)) {
+    $post = array_merge($post, $data);
+  }
   $xml = icl_core_call_service ( '/websites/create_by_cms.xml', TRUE, $post);
 
   if (is_string ( $xml ) && $xml == '-1 Cannot access via XML-RPC') {
@@ -1510,4 +1513,10 @@ if (! function_exists ( 'gzdecode' )) {
     }
     return $data;
   }
+}
+
+function icl_core_update_account($data) {
+  $uri = '/websites/[wid]/update_by_cms.xml';
+  unset($data['site_id']);
+  return icl_core_call_service($uri, TRUE, $data);
 }
