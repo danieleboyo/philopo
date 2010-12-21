@@ -62,6 +62,15 @@
 float: right;
 }
 
+#block-menu-primary-links ul /* "Primary links" block */ {
+margin-left: 0px;
+padding-left: 0px;
+}
+
+#block-menu-primary-links li /* "Primary links" block */ {
+display: inline
+}
+
 #block-menu-secondary-links /* "Secondary links" block */ {
 }
 
