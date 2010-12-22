@@ -31,6 +31,7 @@ body {
    * this is the standards-compliant way to do that. See also the ie6.css file
    * for the necessary IE5/IE6quirks hack to center a div.
    */
+  font-family: Arial, Helvetica, sans-serif;
   margin-left: auto;
   margin-right: auto;
   width: 800px;
