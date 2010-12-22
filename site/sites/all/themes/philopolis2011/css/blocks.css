@@ -105,7 +105,11 @@ display: inline
 float: left;
 }
 
-#block-block-11 {
+#block-locale-0 li.active {
+display:none;
+}
+
+#block-block-11, #block-block-10 {
 font-family: Arial, Helvetica, sans-serif;
 color: black;
 font-size: 2em;
@@ -115,7 +119,7 @@ margin-right: auto;
 margin-left: auto;
 }
 
-#block-block-3 ul, #block-block-1 ul {
+#block-block-3 ul, #block-block-1 ul, #block-locale-0 ul {
   list-style-type: none;
   margin-left: 0px;
   padding-left: 0px
