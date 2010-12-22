@@ -66,9 +66,20 @@ body {
  */
 #main-wrapper {
   position: relative;
+background-image: url(../bande1.png);
+background-repeat: no-repeat;
 }
 
 #main {
+}
+
+#main h2, #main h1{
+color: #06C9FF;
+}
+
+#content-area .view-frontpage h2 {
+margin-top: 0px;
+padding-top: none;
 }
 
 /*
