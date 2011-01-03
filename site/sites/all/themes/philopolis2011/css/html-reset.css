@@ -221,6 +221,9 @@ a:visited {
 
 a:hover,
 a:focus {
+color: #06c9ff;
+border-bottom-style: dotted;
+border-bottom-color: #06c9ff;
 }
 
 a:active {
